@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AzadiSoft.UserManager.Mappings;
 using AzadiSoft.UserManager.ServiceLayer;
 using AzadiSoft.UserManager.ViewModels;
 
@@ -11,20 +12,27 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
     public class UserController : BaseController
     {
 
-private readonly IUser_Service _userService;
-readonly IRole_Service _roleService;
-readonly IEducationLevel_Service _educationLevelService;
+        #region Constructor
+
+        private readonly IUser_Service _userService;
+
+        private readonly IRole_Service _roleService;
+
+        private readonly IEducationLevel_Service _educationLevelService;
 
 
-public UserController(IUser_Service userService, IRole_Service role_Service, IEducationLevel_Service educationLevel_Service)
-{
-    _userService = userService;
-    
-    _roleService = role_Service;
-    
-    _educationLevelService = educationLevel_Service;
+        public UserController(IUser_Service userService, IRole_Service role_Service,
+            IEducationLevel_Service educationLevel_Service)
+        {
+            _userService = userService;
 
-}
+            _roleService = role_Service;
+
+            _educationLevelService = educationLevel_Service;
+
+        }
+
+        #endregion
 
         // GET: User
         public ActionResult Index()
@@ -46,8 +54,12 @@ public UserController(IUser_Service userService, IRole_Service role_Service, IEd
         [HttpPost]
         public ActionResult Create(UserViewModel model)
         {
-            throw new NotImplementedException();
-            
+            var entity = model.ToEntity();
+
+            _userService.Insert(entity);
+
+            return RedirectToAction("Index");
+
         }
     }
 }
