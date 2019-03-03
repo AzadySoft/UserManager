@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AzadiSoft.UserManager.DataLayer
+namespace AzadiSoft.UserManager.DomainModels
 {
-    public class Class1
+    public class BaseEntity
     {
+
     }
 }

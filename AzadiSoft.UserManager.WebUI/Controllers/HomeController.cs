@@ -10,6 +10,8 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
     {
         public ActionResult Index()
         {
+            
+
             return View();
         }
 
