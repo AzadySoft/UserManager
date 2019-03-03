@@ -15,6 +15,9 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using AzadiSoft.UserManager.DataLayer;
+using AzadiSoft.UserManager.ServiceLayer;
+
 namespace AzadiSoft.UserManager.WebUI.DependencyResolution {
     using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
@@ -30,6 +33,14 @@ namespace AzadiSoft.UserManager.WebUI.DependencyResolution {
 					scan.With(new ControllerConvention());
                 });
             //For<IExample>().Use<Example>();
+
+            For<IUnitOfWork>().Use<MainContext>();
+
+            For<IUser_Service>().Use<User_Service>();
+
+            For<IRole_Service>().Use<Role_Service>();
+
+            For<IEducationLevel_Service>().Use<EducationLevel_Service>();
         }
 
         #endregion

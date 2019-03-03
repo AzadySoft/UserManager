@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzadiSoft.UserManager.Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzadiSoft.UserManager.ViewModels", "AzadiSoft.UserManager.ViewModels\AzadiSoft.UserManager.ViewModels.csproj", "{235F82B8-1EF8-4063-BBD1-AEAF357CCF93}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzadiSoft.UserManager.Mappings", "AzadiSoft.UserManager.Mappings\AzadiSoft.UserManager.Mappings.csproj", "{95CFB7C8-0CB1-4B80-B889-2B2B07281645}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,8 +41,15 @@ Global
 		{235F82B8-1EF8-4063-BBD1-AEAF357CCF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{235F82B8-1EF8-4063-BBD1-AEAF357CCF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{235F82B8-1EF8-4063-BBD1-AEAF357CCF93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95CFB7C8-0CB1-4B80-B889-2B2B07281645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95CFB7C8-0CB1-4B80-B889-2B2B07281645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95CFB7C8-0CB1-4B80-B889-2B2B07281645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95CFB7C8-0CB1-4B80-B889-2B2B07281645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5111E068-4D1C-40FF-B8E6-11854A995505}
 	EndGlobalSection
 EndGlobal
