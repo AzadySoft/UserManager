@@ -12,22 +12,27 @@
 
 @if (hasSuccessMessage)
 {
-    <div class="alert alert-success alert-dismissable">
+<div class="alert alert-success alert-dismissable">
 
-        @successMessage
 
-        <i class="glyphicon-time" data-dismiss="alert">.</i>
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">
+        <i class="fa fa-times"></i>
+    </a>
 
-    </div>
+    @successMessage
+
+</div>
 }
 
 @if (hasErrorMessage)
 {
     <div class="alert alert-danger alert-dismissable">
+        
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+            <i class="fa fa-times"></i>
+        </a>
 
         @ErrorMessage
-
-        <i class="glyphicon-time" data-dismiss="alert">.</i>
 
     </div>
 }

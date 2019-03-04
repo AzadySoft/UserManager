@@ -6,7 +6,42 @@
     var pageTitle = MessageText.UserList;
 
     ViewBag.Title = pageTitle;
+
+    var gridName = "User_Grid";
 }
+
+<script type="text/javascript">
+
+    function viewUser(id) {
+
+        var url = '@Url.Action("View")';
+
+        var postData = {
+
+            id: id
+        }
+
+        var modalTitle = '@MessageText.ViewUserDetails';
+
+        ajaxCall(url,
+
+            function(result) {
+
+                showModal(modalTitle, result);
+            },
+
+            'post',
+            
+            postData,
+
+            function (result, statusText, error) {
+
+                console.error(result.responseText);
+
+            });
+    }
+
+</script>
 
 <h2>@pageTitle</h2>
 
@@ -17,15 +52,22 @@
 
 @helper DeleteButton()
 {
-    <a role="button" href="@Url.Action("Delete")/#=User_ID#" onclick="return confirm('@MessageText.AreYouSureToDelete')" class="btn btn-success">@MessageText.Delete</a>
+    <a role="button" href="@Url.Action("Delete")/#=User_ID#" onclick="return confirm('@MessageText.AreYouSureToDelete')" class="btn btn-danger">@MessageText.Delete</a>
 }
 
 
-@(Html.Kendo().Grid<UserViewModel>()
+@helper ViewButton()
+{
+    <button type="button" class="btn btn-primary" onclick="viewUser(#=User_ID#)">@MessageText.View</button>
+}
 
+@(Html.Kendo().Grid<UserViewModel>()
+      
+      .Name(gridName)
+      
           .Columns(columns =>
           {
-              columns.Bound(x => x.User_ID).Width(120);
+              columns.Bound(x => x.User_ID).Title("ID").Width(150);
 
               columns.Bound(x => x.UserName);
 
@@ -37,11 +79,15 @@
 
               columns.Bound(x => x.MobileNumber);
 
-              columns.Template(x => { }).ClientTemplate(EditButton().ToHtmlString()).Title(MessageText.Edit).Width(80);
+              var buttonWidth = 100;
 
-              columns.Template(x => { }).ClientTemplate(DeleteButton().ToHtmlString()).Title(MessageText.Delete).Width(80);
+              columns.Template(x => { }).ClientTemplate(ViewButton().ToHtmlString()).Title(MessageText.View).Width(buttonWidth);
 
-          })
+              columns.Template(x => { }).ClientTemplate(EditButton().ToHtmlString()).Title(MessageText.Edit).Width(buttonWidth);
+
+              columns.Template(x => { }).ClientTemplate(DeleteButton().ToHtmlString()).Title(MessageText.Delete).Width(buttonWidth);
+
+          })      
 
           .Sortable()
 
@@ -58,5 +104,7 @@
           .Mobile()
 
           .Selectable(s => s.Mode(GridSelectionMode.Single).Type(GridSelectionType.Row))
+
+      .ToolBar(toolbar => toolbar.Custom().Action("Create","User").Text(MessageText.CreateNewUser))
 
 )

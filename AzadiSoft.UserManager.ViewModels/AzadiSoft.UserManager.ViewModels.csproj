@@ -71,5 +71,11 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AzadiSoft.UserManager.Resources\AzadiSoft.UserManager.Resources.csproj">
+      <Project>{32D074FD-B39F-4EA9-B075-C239C0041AD9}</Project>
+      <Name>AzadiSoft.UserManager.Resources</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

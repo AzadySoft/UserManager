@@ -7,6 +7,7 @@ using AzadiSoft.UserManager.Mappings;
 using AzadiSoft.UserManager.Resources;
 using AzadiSoft.UserManager.ServiceLayer;
 using AzadiSoft.UserManager.ViewModels;
+using AzadiSoft.UserManager.WebUI.Classes;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 
@@ -40,7 +41,7 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
         // GET: User
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("List");
         }
 
         public ActionResult List()
@@ -69,6 +70,8 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
         {
             try
             {
+                model.DateCreated = DateTime.Now;
+
                 var entity = model.ToEntity();
 
                 _userService.Insert(entity);
@@ -92,11 +95,36 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
 
         public ActionResult Grid_Read([DataSourceRequest] DataSourceRequest request)
         {
-            var query = _userService.GetAllQueryable();
+            var query = _userService.GetAllQueryable().ToList().Select(x => x.ToModel());
 
             var result = query.ToDataSourceResult(request);
 
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        [ActionName("View")]
+        public ActionResult ViewItem(int id)
+        {
+            UserViewModel model;
+
+            var db = CacheServer.Database;
+
+            var tableName = Consts.Users;
+
+            var keyName = "User_" + id;
+
+            if (db.HashExists(tableName, keyName))
+            {
+                model = CacheServer.GetFromTable<UserViewModel>(tableName, keyName); 
+            }
+            else
+            {
+                var user = _userService.GetByID(id);
+
+                model = user.ToModel();
+            }
+
+            return PartialView("ViewItem", model);
         }
     }
 }

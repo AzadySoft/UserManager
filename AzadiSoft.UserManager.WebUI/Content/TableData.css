@@ -1,0 +1,13 @@
+﻿.table-data thead tr {
+  background-color: gray;
+  font-weight: bold;
+  text-align: center; }
+  .table-data thead tr th {
+    text-align: center;
+    padding: 10px;
+    border: 2px black solid; }
+
+.table-data tbody td {
+  text-align: center;
+  padding: 10px;
+  border: 1px black solid; }

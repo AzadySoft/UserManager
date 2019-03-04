@@ -147,4 +147,19 @@
   <data name="UserSuccessfullySignUp" xml:space="preserve">
     <value>کاربر {0} با موفقیت ثبت نام شد.</value>
   </data>
+  <data name="Female" xml:space="preserve">
+    <value>زن</value>
+  </data>
+  <data name="Male" xml:space="preserve">
+    <value>مرد</value>
+  </data>
+  <data name="PropName" xml:space="preserve">
+    <value>نام ویژگی</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>مقدار</value>
+  </data>
+  <data name="ViewUserDetails" xml:space="preserve">
+    <value>مشاهده جزئیات کاربر</value>
+  </data>
 </root>

@@ -120,7 +120,16 @@
   <data name="ErrorMessage" xml:space="preserve">
     <value>ErrorMessage</value>
   </data>
+  <data name="Products" xml:space="preserve">
+    <value>Products</value>
+  </data>
   <data name="SuccessMessage" xml:space="preserve">
     <value>SuccessMessage</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Users</value>
   </data>
 </root>

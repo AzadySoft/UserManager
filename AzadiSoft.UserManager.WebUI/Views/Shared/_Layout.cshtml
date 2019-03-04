@@ -20,6 +20,9 @@
     <script src="@Url.Content("~/Scripts/kendo/2019.1.115/cultures/kendo.culture.fa-IR.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo/2019.1.115/messages/kendo.messages.fa-IR.min.js")"></script>
     <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+    
+    <script src="@Url.Content("~/Scripts/global.js")"></script>
+
 </head>
 <body class="k-rtl">
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -44,6 +47,8 @@
 <div class="container body-content">
     
     @Html.Partial("_SuccessAndErrorMessage")
+    
+    @Html.Partial("_Modal")
 
     @RenderBody()
     <hr/>

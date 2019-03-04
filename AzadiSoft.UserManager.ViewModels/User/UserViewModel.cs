@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Web.Mvc;
+using AzadiSoft.UserManager.Resources;
 
 namespace AzadiSoft.UserManager.ViewModels
 {
@@ -78,6 +79,12 @@ namespace AzadiSoft.UserManager.ViewModels
         [StringLength(128)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public string Gender_Title => Gender.HasValue ? (Gender == true ? MessageText.Female : MessageText.Male) : null;
+
+        public string EducationLevel_Title { get; set; }
+
+        public string Role_TitleFa { get; set; }
 
 
         public UserViewModel()

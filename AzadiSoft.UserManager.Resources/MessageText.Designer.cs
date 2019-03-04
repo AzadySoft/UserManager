@@ -97,6 +97,33 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to زن.
+        /// </summary>
+        public static string Female {
+            get {
+                return ResourceManager.GetString("Female", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مرد.
+        /// </summary>
+        public static string Male {
+            get {
+                return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام ویژگی.
+        /// </summary>
+        public static string PropName {
+            get {
+                return ResourceManager.GetString("PropName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to پاک کردن فرم.
         /// </summary>
         public static string ResetForm {
@@ -133,6 +160,15 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to مقدار.
+        /// </summary>
+        public static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to مشاهده.
         /// </summary>
         public static string View {
@@ -147,6 +183,15 @@ namespace AzadiSoft.UserManager.Resources {
         public static string ViewDetails {
             get {
                 return ResourceManager.GetString("ViewDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مشاهده جزئیات کاربر.
+        /// </summary>
+        public static string ViewUserDetails {
+            get {
+                return ResourceManager.GetString("ViewUserDetails", resourceCulture);
             }
         }
     }

@@ -72,5 +72,36 @@ namespace AzadiSoft.UserManager.WebUI.Classes
         {
             Database.StringSet(keyName, value);
         }
+
+        public static void AddToTable<T>(string tableName, string keyName, T value) where T : class
+        {
+            var jsonData = JavaScriptSerializer.Serialize(value);
+
+            Database.HashSet(tableName, keyName, jsonData);
+        }
+
+        public static T GetFromTable<T>(string tableName, string keyName, T defaultValue = null) where T : class
+        {
+            if (Database.HashExists(tableName, keyName))
+            {
+                string strValue = Database.HashGet(tableName, keyName);
+
+                var obj = JavaScriptSerializer.Deserialize<T>(strValue);
+
+                return obj;
+            }
+            else
+            {
+                if (defaultValue != null)
+                {
+                    var strValue = JavaScriptSerializer.Serialize(defaultValue);
+
+                    Database.HashSet(tableName, keyName, strValue);
+                }
+
+                return defaultValue;
+            }
+
+        }
     }
 }

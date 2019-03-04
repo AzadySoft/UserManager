@@ -1,0 +1,158 @@
+﻿@using AzadiSoft.UserManager.Resources
+@model AzadiSoft.UserManager.ViewModels.UserViewModel
+
+@{
+    var user = Model;
+}
+
+<table class="table-data">
+    <thead>
+    <tr>
+        <th>@MessageText.PropName</th>
+        <th>@MessageText.Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(x => x.User_ID)
+        </td>
+
+        <td>
+            @Html.DisplayFor(x => x.User_ID)
+        </td>
+
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayNameFor(x => x.UserName)
+        </td>
+        <td>
+            @user.UserName
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.Email)
+        </td>
+        <td>
+            @user.Email
+        </td>
+    </tr>
+    <tr>
+
+
+        <td>
+            @Html.DisplayNameFor(x => x.FirstName)
+        </td>
+        <td>
+            @user.FirstName
+        </td>
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.LastName)
+        </td>
+        <td>
+            @user.LastName
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.Gender_Title)
+        </td>
+        <td>
+            @user.Gender_Title
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.Birthday)
+        </td>
+        <td>
+            @user.Birthday
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.NationalCode)
+        </td>
+        <td>
+            @user.NationalCode
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.EducationLevel_Title)
+        </td>
+        <td>
+            @user.EducationLevel_Title
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.Role_TitleFa)
+        </td>
+        <td>
+            @user.Role_TitleFa
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.MobileNumber)
+        </td>
+        <td>
+            @user.MobileNumber
+        </td>
+    </tr>
+    <tr>
+
+
+        <td>
+            @Html.DisplayNameFor(x => x.Address)
+        </td>
+        <td>
+            @user.Address
+        </td>
+
+    </tr>
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.Country)
+        </td>
+        <td>
+            @user.Country
+        </td>
+
+    </tr>
+
+    <tr>
+
+        <td>
+            @Html.DisplayNameFor(x => x.City)
+        </td>
+        <td>
+            @user.City
+        </td>
+
+    </tr>
+
+    </tbody>
+</table>
+
