@@ -1,0 +1,62 @@
+﻿@using AzadiSoft.UserManager.Resources;
+@using AzadiSoft.UserManager.ViewModels
+
+@{
+
+    var pageTitle = MessageText.UserList;
+
+    ViewBag.Title = pageTitle;
+}
+
+<h2>@pageTitle</h2>
+
+@helper EditButton()
+{
+    <a role="button" href="@Url.Action("Edit")/#=User_ID#" class="btn btn-success">@MessageText.Edit</a>
+}
+
+@helper DeleteButton()
+{
+    <a role="button" href="@Url.Action("Delete")/#=User_ID#" onclick="return confirm('@MessageText.AreYouSureToDelete')" class="btn btn-success">@MessageText.Delete</a>
+}
+
+
+@(Html.Kendo().Grid<UserViewModel>()
+
+          .Columns(columns =>
+          {
+              columns.Bound(x => x.User_ID).Width(120);
+
+              columns.Bound(x => x.UserName);
+
+              columns.Bound(x => x.Email);
+
+              columns.Bound(x => x.FirstName);
+
+              columns.Bound(x => x.LastName);
+
+              columns.Bound(x => x.MobileNumber);
+
+              columns.Template(x => { }).ClientTemplate(EditButton().ToHtmlString()).Title(MessageText.Edit).Width(80);
+
+              columns.Template(x => { }).ClientTemplate(DeleteButton().ToHtmlString()).Title(MessageText.Delete).Width(80);
+
+          })
+
+          .Sortable()
+
+          .Filterable(filter => filter.Mode(GridFilterMode.Row))
+
+          .Scrollable(x => x.Height(600))
+
+          .Pageable(p => p.Refresh(true).PreviousNext(true))
+
+          .DataSource(x => x.Ajax().Read(read => read.Action("Grid_Read", "User"))
+
+              .Model(model => model.Id(id => id.User_ID)).PageSize(25))
+
+          .Mobile()
+
+          .Selectable(s => s.Mode(GridSelectionMode.Single).Type(GridSelectionType.Row))
+
+)

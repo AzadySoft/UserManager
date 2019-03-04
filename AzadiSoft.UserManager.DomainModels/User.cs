@@ -69,5 +69,10 @@ namespace AzadiSoft.UserManager.DomainModels
         public virtual EducationLevel EducationLevel { get; set; }
 
         public virtual Role Role { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Password { get; set; }
+
     }
 }

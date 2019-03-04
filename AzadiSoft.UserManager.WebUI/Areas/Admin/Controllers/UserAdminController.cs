@@ -26,6 +26,16 @@ namespace AzadiSoft.UserManager.WebUI.Areas.Admin.Controllers
             return View();
         }
 
+        public ActionResult List()
+        {
+            return View();
+        }
+
+        public ActionResult Grid()
+        {
+            return View();
+        }
+
         public ActionResult ViewUser(int id)
         {
             var redis = ConnectionMultiplexer.Connect(Settings.RedisCacheServer);

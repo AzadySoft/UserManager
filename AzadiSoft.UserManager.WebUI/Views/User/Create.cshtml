@@ -1,8 +1,148 @@
-﻿@model AzadiSoft.UserManager.ViewModels.UserViewModel
+﻿@using AzadiSoft.UserManager.Resources
+@model AzadiSoft.UserManager.ViewModels.UserViewModel
 
 @{
-    ViewBag.Title = "Create";
+
+    var pageTitle = MessageText.CreateNewUser;
+
+    ViewBag.Title = pageTitle;
+
+    var formControl = "form-control";
+
+    var labelCol = "control-label col-md-2";
+
+    var editorCol = "col-md-10";
+
+    var formGroup = "form-group";
+
+    var userNameAlert = "UserName_Alert";
+
 }
 
-<h2>Create</h2>
+<h2>@pageTitle</h2>
 
+<script type="text/javascript">
+
+    function isUserAlreadyRegistered(userName) {
+
+
+    }
+
+    function isEmailRegistered(email) {
+
+
+    }
+
+</script>
+
+@using (Html.BeginForm("Create", "User", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+{
+
+    @Html.ValidationSummary(false)
+
+    <div class="@formGroup">
+
+        @Html.LabelFor(x => x.UserName, new {@class = labelCol})
+
+        <div class="@editorCol">
+
+            @Html.EditorFor(x => x.UserName, new {htmlAttributes = new {@class = formControl}})
+
+            @Html.ValidationMessageFor(x => x.UserName)
+
+        </div>
+
+    </div>
+
+    <div class="@formGroup">
+
+        @Html.LabelFor(x => x.Password, new {@class = labelCol})
+
+        <div class="@editorCol">
+
+            @Html.EditorFor(x => x.Password, new {htmlAttributes = new {@class = formControl}})
+
+            @Html.ValidationMessageFor(x => x.Password)
+
+        </div>
+
+    </div>
+
+    <div class="@formGroup">
+
+        @Html.LabelFor(x => x.Email, new {@class = labelCol})
+
+        <div class="@editorCol">
+
+            @Html.EditorFor(x => x.Email, new {htmlAttributes = new {@class = formControl}})
+
+            @Html.ValidationMessageFor(x => x.Email)
+
+        </div>
+
+    </div>
+
+    <div class="@formGroup">
+
+        @Html.LabelFor(x => x.FirstName, new {@class = labelCol})
+
+        <div class="@editorCol">
+
+            @Html.EditorFor(x => x.FirstName, new {htmlAttributes = new {@class = formControl}})
+
+            @Html.ValidationMessageFor(x => x.FirstName)
+
+        </div>
+
+    </div>
+
+    <div class="@formGroup">
+
+        @Html.LabelFor(x => x.LastName, new {@class = labelCol})
+
+        <div class="@editorCol">
+
+            @Html.EditorFor(x => x.LastName, new {htmlAttributes = new {@class = formControl}})
+
+            @Html.ValidationMessageFor(x => x.LastName)
+
+        </div>
+
+    </div>
+
+    <div class="@formGroup">
+
+        @Html.LabelFor(x => x.EducationLevel_ID, new {@class = labelCol})
+
+        <div class="@editorCol">
+
+            @Html.DropDownListFor(x => x.EducationLevel_ID, Model.EducationLevelListItems, new{@class=formControl} )
+
+            @Html.ValidationMessageFor(x => x.EducationLevel_ID)
+
+        </div>
+
+    </div>
+
+    <div class="@formGroup">
+
+        @Html.LabelFor(x => x.Role_ID, new {@class = labelCol})
+
+        <div class="@editorCol">
+
+            @Html.DropDownListFor(x => x.Role_ID, Model.RoleListItems, new{@class=formControl} )
+
+            @Html.ValidationMessageFor(x => x.Role_ID)
+
+        </div>
+
+    </div>
+
+    <div class="row col-lg-offset-2">
+        
+        <button id="btnSubmit" type="submit" class="btn btn-success">@MessageText.CreateNewUser</button> &nbsp;
+        
+        <button id="btnReset" type="reset"  class="btn btn-success">@MessageText.ResetForm</button>
+
+    </div>
+}

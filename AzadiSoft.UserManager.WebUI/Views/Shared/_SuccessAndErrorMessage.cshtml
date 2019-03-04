@@ -1,0 +1,33 @@
+﻿@using AzadiSoft.UserManager.Resources
+@{
+    var hasSuccessMessage = TempData.ContainsKey(Consts.SuccessMessage);
+
+    var successMessage = TempData[Consts.SuccessMessage];
+
+    var hasErrorMessage = TempData.ContainsKey(Consts.ErrorMessage);
+
+    var ErrorMessage = TempData[Consts.ErrorMessage];
+
+}
+
+@if (hasSuccessMessage)
+{
+    <div class="alert alert-success alert-dismissable">
+
+        @successMessage
+
+        <i class="glyphicon-time" data-dismiss="alert">.</i>
+
+    </div>
+}
+
+@if (hasErrorMessage)
+{
+    <div class="alert alert-danger alert-dismissable">
+
+        @ErrorMessage
+
+        <i class="glyphicon-time" data-dismiss="alert">.</i>
+
+    </div>
+}

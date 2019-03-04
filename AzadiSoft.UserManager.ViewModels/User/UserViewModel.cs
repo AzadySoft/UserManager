@@ -27,6 +27,7 @@ namespace AzadiSoft.UserManager.ViewModels
 
         [Required]
         [StringLength(128)]
+        [EmailAddress]
         public string Email { get; set; }
 
         [StringLength(50)]
@@ -69,6 +70,15 @@ namespace AzadiSoft.UserManager.ViewModels
         public int? Role_ID { get; set; }
 
         public IList<SelectListItem> RoleListItems { get; set; }
+
+        [StringLength(128)]
+        [Required]
+        public string UserName { get; set; }
+
+        [StringLength(128)]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+
 
         public UserViewModel()
         {

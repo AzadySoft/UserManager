@@ -4,8 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AzadiSoft.UserManager.Mappings;
+using AzadiSoft.UserManager.Resources;
 using AzadiSoft.UserManager.ServiceLayer;
 using AzadiSoft.UserManager.ViewModels;
+using Kendo.Mvc.Extensions;
+using Kendo.Mvc.UI;
 
 namespace AzadiSoft.UserManager.WebUI.Controllers
 {
@@ -40,26 +43,60 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             return View();
         }
 
+        public ActionResult List()
+        {
+            return View();
+        }
+
         public ActionResult Create()
         {
             var model = new UserViewModel();
 
+            FillViewModelData(model);
+
+            return View(model);
+        }
+
+        private void FillViewModelData(UserViewModel model)
+        {
             model.RoleListItems = _roleService.GetSelectListItems();
 
             model.EducationLevelListItems = _educationLevelService.GetSelectListItems();
-
-            return View(model);
         }
 
         [HttpPost]
         public ActionResult Create(UserViewModel model)
         {
-            var entity = model.ToEntity();
+            try
+            {
+                var entity = model.ToEntity();
 
-            _userService.Insert(entity);
+                _userService.Insert(entity);
 
-            return RedirectToAction("Index");
+                TempData[Consts.SuccessMessage] = string.Format(MessageText.UserSuccessfullySignUp, model.UserName);
 
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception ex)
+            {
+
+                TempData[Consts.ErrorMessage] = ex.Message;
+
+                FillViewModelData(model);
+
+                return View(model);
+
+            }
+        }
+
+        public ActionResult Grid_Read([DataSourceRequest] DataSourceRequest request)
+        {
+            var query = _userService.GetAllQueryable();
+
+            var result = query.ToDataSourceResult(request);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }
