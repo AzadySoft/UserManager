@@ -106,11 +106,38 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to فیلد {0} می بایست یک آدرس ایمیل معتبر باشد..
+        /// </summary>
+        public static string InvalidEmail {
+            get {
+                return ResourceManager.GetString("InvalidEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to مرد.
         /// </summary>
         public static string Male {
             get {
                 return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لطفا {0} را وارد کنید..
+        /// </summary>
+        public static string PleaseEnterMessage {
+            get {
+                return ResourceManager.GetString("PleaseEnterMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to لطفا {0} را انتخاب کنید..
+        /// </summary>
+        public static string PleaseSelectMessage {
+            get {
+                return ResourceManager.GetString("PleaseSelectMessage", resourceCulture);
             }
         }
         
@@ -129,6 +156,24 @@ namespace AzadiSoft.UserManager.Resources {
         public static string ResetForm {
             get {
                 return ResourceManager.GetString("ResetForm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to - انتخاب از لیست - .
+        /// </summary>
+        public static string SelectFromList {
+            get {
+                return ResourceManager.GetString("SelectFromList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} می بایست حداقل {2} و حداکثر {1} کاراکتر طول داشته باشد..
+        /// </summary>
+        public static string StringLengthMessage {
+            get {
+                return ResourceManager.GetString("StringLengthMessage", resourceCulture);
             }
         }
         

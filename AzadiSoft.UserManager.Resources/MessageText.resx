@@ -162,4 +162,19 @@
   <data name="ViewUserDetails" xml:space="preserve">
     <value>مشاهده جزئیات کاربر</value>
   </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>فیلد {0} می بایست یک آدرس ایمیل معتبر باشد.</value>
+  </data>
+  <data name="PleaseEnterMessage" xml:space="preserve">
+    <value>لطفا {0} را وارد کنید.</value>
+  </data>
+  <data name="PleaseSelectMessage" xml:space="preserve">
+    <value>لطفا {0} را انتخاب کنید.</value>
+  </data>
+  <data name="SelectFromList" xml:space="preserve">
+    <value>- انتخاب از لیست - </value>
+  </data>
+  <data name="StringLengthMessage" xml:space="preserve">
+    <value>{0} می بایست حداقل {2} و حداکثر {1} کاراکتر طول داشته باشد.</value>
+  </data>
 </root>

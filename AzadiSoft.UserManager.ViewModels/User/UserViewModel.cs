@@ -13,77 +13,101 @@ namespace AzadiSoft.UserManager.ViewModels
         [Key]
         public int User_ID { get; set; }
 
-        [Required]
+        [Display(Name = "نام")]
+        [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseEnterMessage")]
         [StringLength(80)]
         public string FirstName { get; set; }
 
-        [Required]
+        [Display(Name = "نام خانوادگی")]
+        [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseEnterMessage")]
         [StringLength(80)]
         public string LastName { get; set; }
 
+        [Display(Name = "تاریخ تولد")]
+        [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseEnterMessage")]
         [Column(TypeName = "date")]
         public DateTime Birthday { get; set; }
 
         public bool? Gender { get; set; }
 
-        [Required]
+        [Display(Name = "آدرس ایمیل")]
+        [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseEnterMessage")]
         [StringLength(128)]
-        [EmailAddress]
+        [EmailAddress(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName="InvalidEmail")]
         public string Email { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "کد ملی")]
+        [StringLength(50, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string NationalCode { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "شماره موبایل")]
+        [StringLength(50, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string MobileNumber { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "تلفن منزل")]
+        [StringLength(50, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string HomePhoneNumber { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "تلفن محل کار")]
+        [StringLength(50, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string WorkPhoneNumber { get; set; }
 
+        [Display(Name = "فعال")]
         public bool IsActive { get; set; }
 
+        [Display(Name = "تاریخ ایجاد")]
         public DateTime DateCreated { get; set; }
 
+        [Display(Name = "تاریخ بروزرسانی")]
         public DateTime? DateLastUpdated { get; set; }
 
-        [StringLength(512)]
+        [Display(Name = "توضیحات")]
+        [StringLength(512, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string Notes { get; set; }
 
+        [Display(Name = "میزان تحصیلات")]
         public int? EducationLevel_ID { get; set; }
 
         public IList<SelectListItem> EducationLevelListItems { get; set; }
 
-        [StringLength(512)]
+        [Display(Name = "آدرس")]
+        [StringLength(512, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string Address { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "کشور")]
+        [StringLength(50, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string Country { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "شهر")]
+        [StringLength(50, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string City { get; set; }
 
-        [StringLength(50)]
+        [Display(Name = "ناحیه")]
+        [StringLength(50, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string Region { get; set; }
 
+        [Display(Name = "نوع کاربر")]
         public int? Role_ID { get; set; }
 
         public IList<SelectListItem> RoleListItems { get; set; }
 
-        [StringLength(128)]
-        [Required]
+        [Display(Name = "شناسه کاربری")]
+        [StringLength(128, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
+        [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseEnterMessage")]
         public string UserName { get; set; }
 
-        [StringLength(128)]
+        [Display(Name = "کلمه عبور")]
+        [StringLength(128, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage", MinimumLength = 6)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
 
+        [Display(Name = "جنسیت")]
         public string Gender_Title => Gender.HasValue ? (Gender == true ? MessageText.Female : MessageText.Male) : null;
 
+        [Display(Name = "میزان تحصیلات")]
         public string EducationLevel_Title { get; set; }
 
+        [Display(Name = "نوع کاربر")]
         public string Role_TitleFa { get; set; }
 
 

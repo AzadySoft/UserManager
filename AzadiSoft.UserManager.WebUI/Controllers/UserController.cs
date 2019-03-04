@@ -10,6 +10,7 @@ using AzadiSoft.UserManager.ViewModels;
 using AzadiSoft.UserManager.WebUI.Classes;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
+using StructureMap.Util;
 
 namespace AzadiSoft.UserManager.WebUI.Controllers
 {
@@ -122,6 +123,8 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
                 var user = _userService.GetByID(id);
 
                 model = user.ToModel();
+
+                CacheServer.AddToTable(tableName, keyName, model);
             }
 
             return PartialView("ViewItem", model);

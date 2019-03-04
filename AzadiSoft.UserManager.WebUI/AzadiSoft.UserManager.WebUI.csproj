@@ -2890,6 +2890,10 @@
       <Project>{7fdd7fc3-03cf-40d2-9418-fcffe74b23f3}</Project>
       <Name>AzadiSoft.UserManager.DomainModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AzadiSoft.UserManager.Framework\AzadiSoft.UserManager.Framework.csproj">
+      <Project>{40673ac1-c198-42c1-8859-987e1d656b5e}</Project>
+      <Name>AzadiSoft.UserManager.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AzadiSoft.UserManager.Mappings\AzadiSoft.UserManager.Mappings.csproj">
       <Project>{95cfb7c8-0cb1-4b80-b889-2b2b07281645}</Project>
       <Name>AzadiSoft.UserManager.Mappings</Name>
