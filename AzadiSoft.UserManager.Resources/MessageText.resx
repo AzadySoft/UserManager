@@ -162,8 +162,17 @@
   <data name="ViewUserDetails" xml:space="preserve">
     <value>مشاهده جزئیات کاربر</value>
   </data>
+  <data name="BackToList" xml:space="preserve">
+    <value>بازگشت به لیست</value>
+  </data>
+  <data name="EditUserDetails" xml:space="preserve">
+    <value>ویرایش اطلاعات کاربر</value>
+  </data>
   <data name="InvalidEmail" xml:space="preserve">
     <value>فیلد {0} می بایست یک آدرس ایمیل معتبر باشد.</value>
+  </data>
+  <data name="NotSpecified" xml:space="preserve">
+    <value>نامشخص</value>
   </data>
   <data name="PleaseEnterMessage" xml:space="preserve">
     <value>لطفا {0} را وارد کنید.</value>
@@ -176,5 +185,11 @@
   </data>
   <data name="StringLengthMessage" xml:space="preserve">
     <value>{0} می بایست حداقل {2} و حداکثر {1} کاراکتر طول داشته باشد.</value>
+  </data>
+  <data name="UserDeleted" xml:space="preserve">
+    <value>کاربر &lt;b&gt; {0} &lt;/b&gt; از سیستم حذف شد.</value>
+  </data>
+  <data name="UserUpdated" xml:space="preserve">
+    <value>اطلاعات کاربر &lt;b&gt; {0} &lt;/b&gt; بروزرسانی شد.</value>
   </data>
 </root>

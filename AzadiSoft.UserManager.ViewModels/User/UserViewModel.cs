@@ -28,7 +28,9 @@ namespace AzadiSoft.UserManager.ViewModels
         [Column(TypeName = "date")]
         public DateTime Birthday { get; set; }
 
-        public bool? Gender { get; set; }
+        [Display(Name = "جنسیت")]
+        [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseSelectMessage")]
+        public int? Gender { get; set; }
 
         [Display(Name = "آدرس ایمیل")]
         [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseEnterMessage")]
@@ -61,6 +63,7 @@ namespace AzadiSoft.UserManager.ViewModels
         [Display(Name = "تاریخ بروزرسانی")]
         public DateTime? DateLastUpdated { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(Name = "توضیحات")]
         [StringLength(512, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
         public string Notes { get; set; }
@@ -102,7 +105,7 @@ namespace AzadiSoft.UserManager.ViewModels
         public string Password { get; set; }
 
         [Display(Name = "جنسیت")]
-        public string Gender_Title => Gender.HasValue ? (Gender == true ? MessageText.Female : MessageText.Male) : null;
+        public string Gender_Title => Gender.HasValue ? (Gender == (int) EGender.Male ? MessageText.Male : MessageText.Female) : MessageText.NotSpecified;
 
         [Display(Name = "میزان تحصیلات")]
         public string EducationLevel_Title { get; set; }
@@ -110,12 +113,16 @@ namespace AzadiSoft.UserManager.ViewModels
         [Display(Name = "نوع کاربر")]
         public string Role_TitleFa { get; set; }
 
+        public IList<SelectListItem> Gender_ListItems { get; set; }
+
 
         public UserViewModel()
         {
             EducationLevelListItems = new List<SelectListItem>();
 
             RoleListItems = new List<SelectListItem>();
+
+            Gender_ListItems = new List<SelectListItem>();
         }
 
     }

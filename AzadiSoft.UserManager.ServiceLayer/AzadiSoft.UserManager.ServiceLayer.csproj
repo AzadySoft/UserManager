@@ -88,6 +88,10 @@
       <Project>{7fdd7fc3-03cf-40d2-9418-fcffe74b23f3}</Project>
       <Name>AzadiSoft.UserManager.DomainModels</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AzadiSoft.UserManager.Framework\AzadiSoft.UserManager.Framework.csproj">
+      <Project>{40673AC1-C198-42C1-8859-987E1D656B5E}</Project>
+      <Name>AzadiSoft.UserManager.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AzadiSoft.UserManager.ViewModels\AzadiSoft.UserManager.ViewModels.csproj">
       <Project>{235f82b8-1ef8-4063-bbd1-aeaf357ccf93}</Project>
       <Name>AzadiSoft.UserManager.ViewModels</Name>

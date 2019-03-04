@@ -23,7 +23,7 @@ namespace AzadiSoft.UserManager.DomainModels
         [Column(TypeName = "date")]
         public DateTime Birthday { get; set; }
 
-        public bool? Gender { get; set; }
+        public int? Gender { get; set; }
 
         [Required]
         [StringLength(128)]

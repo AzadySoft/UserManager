@@ -3,21 +3,19 @@
 
 @{
 
-    var pageTitle = MessageText.CreateNewUser;
+    var pageTitle = MessageText.EditUserDetails;
 
     ViewBag.Title = pageTitle;
-
-
 }
 
 <h2>@pageTitle</h2>
 
-
-
-@using (Html.BeginForm("Create", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
 
     @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x => x.User_ID)
 
     @Html.ValidationSummary(false)
 
@@ -25,7 +23,7 @@
 
     <div class="row col-lg-offset-2">
 
-        <button id="btnSubmit" type="submit" class="btn btn-success">@MessageText.CreateNewUser</button> &nbsp;
+        <button id="btnSubmit" type="submit" class="btn btn-success">@MessageText.EditUserDetails</button> &nbsp;
 
         <button id="btnReset" type="reset" class="btn btn-danger">@MessageText.ResetForm</button>
         

@@ -20,6 +20,8 @@ namespace AzadiSoft.UserManager.ServiceLayer
 
         void Update(TEntity entity);
 
+        void Detach(TEntity entity);
+
         IUnitOfWork UnitOfWork { get; }
 
         IDbSet<TEntity> DbSet { get; }

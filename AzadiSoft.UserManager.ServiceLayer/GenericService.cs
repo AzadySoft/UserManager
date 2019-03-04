@@ -79,6 +79,13 @@ namespace AzadiSoft.UserManager.ServiceLayer
             UnitOfWork.SaveChanges();
         }
 
+        public void Detach(TEntity entity)
+        {
+            var entry = UnitOfWork.Entry(entity);
+
+            entry.State = EntityState.Detached;
+        }
+
         public IUnitOfWork UnitOfWork { get; }
 
         public IDbSet<TEntity> DbSet { get; }

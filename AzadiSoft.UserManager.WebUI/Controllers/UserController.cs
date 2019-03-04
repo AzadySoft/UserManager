@@ -64,6 +64,13 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             model.RoleListItems = _roleService.GetSelectListItems();
 
             model.EducationLevelListItems = _educationLevelService.GetSelectListItems();
+
+            model.Gender_ListItems = new List<SelectListItem>()
+            {
+                new SelectListItem() {Text = MessageText.SelectFromList, Value = ""},
+                new SelectListItem() {Text = MessageText.Male, Value = "0"},
+                new SelectListItem() {Text = MessageText.Female, Value = "1"}
+            };
         }
 
         [HttpPost]
@@ -128,6 +135,70 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             }
 
             return PartialView("ViewItem", model);
+        }
+
+        public ActionResult IsUserNameRegistered(string userName)
+        {
+            var exists = _userService.GetAllQueryable(x => x.UserName == userName).Any();
+
+            return Json(exists, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult IsEmailRegistered(string Email)
+        {
+            var exists = _userService.GetAllQueryable(x => x.Email == Email).Any();
+
+            return Json(exists, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var user = _userService.GetByID(id);
+
+            var model = user.ToModel();
+
+            FillViewModelData(model);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(UserViewModel model)
+        {
+
+            try
+            {
+                var original = _userService.GetByID(model.User_ID);
+
+                _userService.Detach(original);
+
+                var user = model.ToEntity();
+
+                user.DateCreated = original.DateCreated;
+
+                user.DateLastUpdated = DateTime.Now;
+
+                if (!string.IsNullOrEmpty(model.Password))
+                {
+                    user.Password = original.Password;
+                }
+
+                _userService.Update(user);
+
+                SuccessMessage(string.Format(MessageText.UserUpdated , user.UserName));
+
+                return RedirectToAction("List");
+
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage(ex.Message + "<br/>" + ex.InnerException?.Message + "<br/>" + ex.InnerException?.InnerException?.Message);
+
+                FillViewModelData(model);
+
+                return View(model);
+            }
+
         }
     }
 }

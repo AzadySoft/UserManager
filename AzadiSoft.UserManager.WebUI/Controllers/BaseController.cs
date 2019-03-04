@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using AzadiSoft.UserManager.Resources;
 
 namespace AzadiSoft.UserManager.WebUI.Controllers
 {
@@ -19,5 +20,16 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
 
             return data;
         }
+
+        public void SuccessMessage(string msg)
+        {
+            TempData[Consts.SuccessMessage] = msg;
+        }
+
+        public void ErrorMessage(string msg)
+        {
+            TempData[Consts.ErrorMessage] = msg;
+        }
+
     }
 }

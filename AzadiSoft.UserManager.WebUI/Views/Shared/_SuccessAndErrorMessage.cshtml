@@ -19,7 +19,7 @@
         <i class="fa fa-times"></i>
     </a>
 
-    @successMessage
+    @Html.Raw(successMessage)
 
 </div>
 }
@@ -32,7 +32,7 @@
             <i class="fa fa-times"></i>
         </a>
 
-        @ErrorMessage
+        @Html.Raw(ErrorMessage)
 
     </div>
 }

@@ -70,6 +70,15 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to بازگشت به لیست.
+        /// </summary>
+        public static string BackToList {
+            get {
+                return ResourceManager.GetString("BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ایجاد کاربر جدید.
         /// </summary>
         public static string CreateNewUser {
@@ -97,6 +106,15 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ویرایش اطلاعات کاربر.
+        /// </summary>
+        public static string EditUserDetails {
+            get {
+                return ResourceManager.GetString("EditUserDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to زن.
         /// </summary>
         public static string Female {
@@ -120,6 +138,15 @@ namespace AzadiSoft.UserManager.Resources {
         public static string Male {
             get {
                 return ResourceManager.GetString("Male", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نامشخص.
+        /// </summary>
+        public static string NotSpecified {
+            get {
+                return ResourceManager.GetString("NotSpecified", resourceCulture);
             }
         }
         
@@ -187,6 +214,15 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to کاربر &lt;b&gt; {0} &lt;/b&gt; از سیستم حذف شد..
+        /// </summary>
+        public static string UserDeleted {
+            get {
+                return ResourceManager.GetString("UserDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to لیست کاربران.
         /// </summary>
         public static string UserList {
@@ -201,6 +237,15 @@ namespace AzadiSoft.UserManager.Resources {
         public static string UserSuccessfullySignUp {
             get {
                 return ResourceManager.GetString("UserSuccessfullySignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اطلاعات کاربر &lt;b&gt; {0} &lt;/b&gt; بروزرسانی شد..
+        /// </summary>
+        public static string UserUpdated {
+            get {
+                return ResourceManager.GetString("UserUpdated", resourceCulture);
             }
         }
         
