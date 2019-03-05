@@ -3,6 +3,11 @@
 
 @{
     var formId = "form-edit-user";
+
+    var divError = "divError";
+
+    ViewData[Consts.EditMode] = true;
+
 }
 
 <script type="text/javascript">
@@ -20,13 +25,20 @@
 
         var form = getForm();
 
-        var formData = form.serializeArray();
+        var formData = form.serializeArray();       
 
         if (form.valid()) {
 
             var url = '@Url.Action("UpdateUser")';
 
             var postData = formData;
+
+            // push a fake error to controller
+
+            //postData.push({ name: 'error', value: true });
+
+            console.log(postData);
+
 
             ajaxCall(url, function(result) {
 
@@ -45,6 +57,14 @@
                 var response = result.responseText;
 
                 console.log(response);
+
+                var divError = $('#@divError');
+
+                var iframe = $('iframe', divError)[0];
+
+                iframe.contentWindow.document.write(response);
+
+                divError.show();
 
                 btn.enable();
 
@@ -78,5 +98,11 @@
 
         <a role="button" href="@Url.Action("List")" class="btn btn-primary">@MessageText.BackToList</a>
 
+    </div>
+
+    <div id="@divError" class="row" hidden>
+        <iframe src="about:blank" width="800" height="480">
+
+        </iframe>
     </div>
 }

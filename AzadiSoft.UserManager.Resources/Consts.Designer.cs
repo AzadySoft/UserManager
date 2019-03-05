@@ -61,6 +61,15 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to EditMode.
+        /// </summary>
+        public static string EditMode {
+            get {
+                return ResourceManager.GetString("EditMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ErrorMessage.
         /// </summary>
         public static string ErrorMessage {

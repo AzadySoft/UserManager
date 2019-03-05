@@ -19,9 +19,13 @@
 
     formGroup += formGroupCol;
 
+    var editMode = Convert.ToBoolean(ViewData[Consts.EditMode]);
+
 }
 
 <script type="text/javascript">
+
+    var isEditMode = @editMode.ToString().ToLower();
 
     function getValidationMessageElement(fieldName) {
 
@@ -122,7 +126,7 @@
 
     <div class="@editorCol">
 
-        @Html.EditorFor(x => x.UserName, new { htmlAttributes = new { @class = formControl, onblur = "isUserAlreadyRegistered($(this).val());" } })
+        @Html.EditorFor(x => x.UserName, new { htmlAttributes = new { @class = formControl, onblur = "isUserAlreadyRegistered($(this).val());"  } })
 
         @Html.ValidationMessageFor(x => x.UserName)
 
@@ -213,7 +217,7 @@
 
         @*@Html.EditorFor(x => x.Birthday,"", new { htmlAttributes = new { @class = formControl } })*@
 
-        @Html.Kendo().DatePickerFor(x => x.Birthday)
+        @Html.Kendo().DatePickerFor(x => x.Birthday).HtmlAttributes(new{style="width:100%"})
 
         @Html.ValidationMessageFor(x => x.Birthday)
 

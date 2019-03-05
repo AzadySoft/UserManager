@@ -213,6 +213,10 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
 
             if (!string.IsNullOrEmpty(model.Password))
             {
+                user.Password = model.Password;
+            }
+            else
+            {
                 user.Password = original.Password;
             }
 

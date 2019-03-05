@@ -164,6 +164,8 @@
 
               columns.Bound(x => x.MobileNumber);
 
+              columns.Bound(x => x.CompanyName);
+
               var buttonWidth = 100;
 
               columns.Template(x => { }).ClientTemplate(ActiveButton().ToHtmlString()).Title(MessageText.Active).Width(buttonWidth);
