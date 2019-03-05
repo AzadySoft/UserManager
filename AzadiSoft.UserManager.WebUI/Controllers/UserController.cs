@@ -152,6 +152,17 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             return Json(exists, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ActivateUser(int id, bool active)
+        {
+            var user = _userService.GetByID(id);
+
+            user.IsActive = active;
+
+            _userService.Update(user);
+
+            return Json(new {user.UserName, active}, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Edit(int id)
         {
             var user = _userService.GetByID(id);

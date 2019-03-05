@@ -1,4 +1,7 @@
-﻿@using AzadiSoft.UserManager.Resources;
+﻿@model UserViewModel
+
+@using AzadiSoft.UserManager.Framework
+@using AzadiSoft.UserManager.Resources;
 @using AzadiSoft.UserManager.ViewModels
 
 @{
@@ -8,6 +11,8 @@
     ViewBag.Title = pageTitle;
 
     var gridName = "User_Grid";
+
+    var userIdKey = "#=" + Html.FieldNameFor(x => x.User_ID) + "#";
 }
 
 <script type="text/javascript">
@@ -41,12 +46,43 @@
             });
     }
 
+    function activateUser(id, active) {
+
+        var url = '@Url.Action("ActivateUser")';
+
+        var postData = {
+
+            id: id, 
+
+            active: active
+        }
+
+        ajaxCall(url,
+
+            function (result) {
+
+                var str = JSON.stringify(result);
+
+                alert(str);
+            },
+
+            'post',
+            
+            postData,
+
+            function (result) {
+
+                console.error(result.responseText);
+
+            });
+    }
+
 </script>
 
 <h2>@pageTitle</h2>
 
 @helper EditButton()
-{
+{    
     <a role="button" href="@Url.Action("Edit")/#=User_ID#" class="btn btn-success">@MessageText.Edit</a>
 }
 
@@ -59,6 +95,15 @@
 @helper ViewButton()
 {
     <button type="button" class="btn btn-primary" onclick="viewUser(#=User_ID#)">@MessageText.View</button>
+}
+
+@helper ActiveButton()
+{
+    var checkBoxID = "chkActive_#=User_ID#";
+
+    <label for="@checkBoxID">@MessageText.Active</label>
+
+    <input type="checkbox" id="@checkBoxID" data-id="#=User_ID#" data-checked="#=IsActive#" #= IsActive ? checked="checked" : null  # onchange="activateUser(#=User_ID#, $(this).prop('checked'));" />
 }
 
 @(Html.Kendo().Grid<UserViewModel>()
@@ -80,6 +125,8 @@
               columns.Bound(x => x.MobileNumber);
 
               var buttonWidth = 100;
+
+              columns.Template(x => { }).ClientTemplate(ActiveButton().ToHtmlString()).Title(MessageText.Active).Width(buttonWidth);
 
               columns.Template(x => { }).ClientTemplate(ViewButton().ToHtmlString()).Title(MessageText.View).Width(buttonWidth);
 

@@ -204,4 +204,7 @@
   <data name="ErrorUpdatingUser" xml:space="preserve">
     <value>خطا در بروزرسانی اطلاعات کاربر:</value>
   </data>
+  <data name="Active" xml:space="preserve">
+    <value>فعال</value>
+  </data>
 </root>
