@@ -169,6 +169,15 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to صفحه اصلی.
+        /// </summary>
+        public static string HomePage {
+            get {
+                return ResourceManager.GetString("HomePage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to فیلد {0} می بایست یک آدرس ایمیل معتبر باشد..
         /// </summary>
         public static string InvalidEmail {

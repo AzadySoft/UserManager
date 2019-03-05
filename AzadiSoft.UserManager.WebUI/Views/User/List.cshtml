@@ -63,7 +63,9 @@
 
                 var str = JSON.stringify(result);
 
-                alert(str);
+                var msg = 'کاربر ' + result.UserName + (result.active ? ' فعال ' : ' غیرفعال ') + 'شد.';
+
+                alert(msg);
             },
 
             'post',
@@ -75,6 +77,39 @@
                 console.error(result.responseText);
 
             });
+    }
+
+    function ajaxEditUser(id) {
+
+        var url = '@Url.Action("EditAjax")';
+
+        var postData = {
+
+            id: id
+        }
+
+        ajaxCall(url, function(result) {
+
+            showModal('@MessageText.EditUserDetails', result);
+
+        }, 'post', postData, function(result) {
+
+            console.error(result.responseText);
+
+        });
+
+    }
+
+    function getGrid() {
+
+        return $('#@gridName');
+    }
+
+    function reloadGrid() {
+
+        var kendoGrid = getGrid().data('kendoGrid');
+
+        kendoGrid.dataSource.read();
     }
 
 </script>
@@ -106,6 +141,11 @@
     <input type="checkbox" id="@checkBoxID" data-id="#=User_ID#" data-checked="#=IsActive#" #= IsActive ? checked="checked" : null  # onchange="activateUser(#=User_ID#, $(this).prop('checked'));" />
 }
 
+@helper AjaxEditButton()
+{
+    <button id="btnEdit_#=User_ID#" type="button" class="btn btn-warning" data-id="#=User_ID#" onclick="ajaxEditUser(#=User_ID#)">Ajax Edit</button>
+}
+
 @(Html.Kendo().Grid<UserViewModel>()
       
       .Name(gridName)
@@ -129,6 +169,9 @@
               columns.Template(x => { }).ClientTemplate(ActiveButton().ToHtmlString()).Title(MessageText.Active).Width(buttonWidth);
 
               columns.Template(x => { }).ClientTemplate(ViewButton().ToHtmlString()).Title(MessageText.View).Width(buttonWidth);
+
+              columns.Template(x => { }).ClientTemplate(AjaxEditButton().ToHtmlString()).Title("Ajax Edit").Width(buttonWidth);
+
 
               columns.Template(x => { }).ClientTemplate(EditButton().ToHtmlString()).Title(MessageText.Edit).Width(buttonWidth);
 

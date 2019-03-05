@@ -180,31 +180,9 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
 
             try
             {
-                var userId = model.User_ID;
-
-                var original = _userService.GetByID(userId);
-
-                _userService.Detach(original);
-
-                var user = model.ToEntity();
-
-                user.DateCreated = original.DateCreated;
-
-                user.DateLastUpdated = DateTime.Now;
-
-                if (!string.IsNullOrEmpty(model.Password))
-                {
-                    user.Password = original.Password;
-                }
-
-                _userService.Update(user);
-
-                CacheServer.DeleteFromTable(Consts.Users, "User_" + userId);
-
-                SuccessMessage(string.Format(MessageText.UserUpdated , user.UserName));
+                TryUpdateUser(model);
 
                 return RedirectToAction("List");
-
             }
             catch (Exception ex)
             {
@@ -215,6 +193,45 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
                 return View(model);
             }
 
+        }
+
+        private void TryUpdateUser(UserViewModel model)
+        {
+            var userId = model.User_ID;
+
+            var original = _userService.GetByID(userId);
+
+            _userService.Detach(original);
+
+            var user = model.ToEntity();
+
+            user.DateCreated = original.DateCreated;
+
+            user.IsActive = original.IsActive;
+
+            user.DateLastUpdated = DateTime.Now;
+
+            if (!string.IsNullOrEmpty(model.Password))
+            {
+                user.Password = original.Password;
+            }
+
+            _userService.Update(user);
+
+            CacheServer.DeleteFromTable(Consts.Users, "User_" + userId);
+
+            SuccessMessage(string.Format(MessageText.UserUpdated, user.UserName));
+        }
+
+        public ActionResult EditAjax(int id)
+        {
+            var user = _userService.GetByID(id);
+
+            var model = user.ToModel();
+
+            FillViewModelData(model);
+
+            return PartialView(model);
         }
 
         public ActionResult Delete(int id)
@@ -234,6 +251,18 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             }
 
             return RedirectToAction("List");
+        }
+
+        public ActionResult UpdateUser(UserViewModel model, bool error = false)
+        {
+            if (error)
+            {
+                throw new InvalidOperationException(MessageText.CommonError);
+            }
+
+            TryUpdateUser(model);
+
+            return Json(new {success = true, model.UserName}, JsonRequestBehavior.AllowGet);
         }
     }
 }

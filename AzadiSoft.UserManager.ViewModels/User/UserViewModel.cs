@@ -94,7 +94,7 @@ namespace AzadiSoft.UserManager.ViewModels
         public IList<SelectListItem> RoleListItems { get; set; }
 
         [Display(Name = "شناسه کاربری")]
-        [StringLength(128, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
+        [StringLength(128, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage", MinimumLength = 3)]
         [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseEnterMessage")]
         public string UserName { get; set; }
 

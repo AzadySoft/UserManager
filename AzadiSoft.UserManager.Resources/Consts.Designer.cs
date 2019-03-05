@@ -70,6 +70,15 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FormGroupCol.
+        /// </summary>
+        public static string FormGroupCol {
+            get {
+                return ResourceManager.GetString("FormGroupCol", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Products.
         /// </summary>
         public static string Products {

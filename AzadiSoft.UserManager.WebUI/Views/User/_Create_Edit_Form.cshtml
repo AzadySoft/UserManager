@@ -1,4 +1,5 @@
 ﻿@using AzadiSoft.UserManager.Framework
+@using AzadiSoft.UserManager.Resources
 @model AzadiSoft.UserManager.ViewModels.UserViewModel
 
 @{
@@ -8,11 +9,15 @@
 
     var editorCol = "col-md-10";
 
-    var formGroup = "form-group col-md-6";
+    var formGroup = "form-group ";
 
     var userNameAlert = "UserName_Alert";
 
     var validator = "Validator_";
+
+    var formGroupCol = ViewData[Consts.FormGroupCol] ?? "col-md-6";
+
+    formGroup += formGroupCol;
 
 }
 
@@ -25,11 +30,23 @@
         return span;
     }
 
+    function getUserNameBox() {
+
+        return $('#@Html.IdFor(x => x.UserName)');
+    }
+
+    function getEmailBox() {
+
+        return $('#@Html.IdFor(x => x.Email)');
+    }
+
     function isUserAlreadyRegistered(userName) {
+
+        var box = getUserNameBox();
 
         var messageElement = getValidationMessageElement('@Html.FieldNameFor(x => x.UserName)');
 
-        if (userName == '') {
+        if (userName == '' || !box.valid()) {
 
             messageElement.html('');
 
@@ -61,9 +78,11 @@
 
     function isEmailAlreadyRegistered(email) {
 
+        var box = getEmailBox();
+
         var messageElement = getValidationMessageElement('@Html.FieldNameFor(x => x.Email)');
 
-        if (email == '') {
+        if (email == '' || !box.valid()) {
 
             messageElement.html('');
 

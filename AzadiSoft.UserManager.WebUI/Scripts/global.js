@@ -3,6 +3,17 @@
     return $('#modal-box');
 }
 
+function showLoading() {
+
+    $.LoadingOverlay('show');
+}
+
+function hideLoading() {
+
+    $.LoadingOverlay('hide');
+
+}
+
 function showModal(title, bodyText) {
 
     var modal = getModal();
@@ -26,7 +37,6 @@ function closeModal() {
 function ajaxCall(url, successFn, method, postData, failFunction) {
 
     var options = {
-
         url: url,
 
         success: function(html) {
@@ -38,6 +48,7 @@ function ajaxCall(url, successFn, method, postData, failFunction) {
                 }
 
             } catch (e) {
+
             }
         },
 
@@ -54,12 +65,51 @@ function ajaxCall(url, successFn, method, postData, failFunction) {
             }
         },
 
+        complete: function(e) {
+
+            hideLoading();
+
+        },
+
         type: method,
 
         data: postData
 
     };
 
+    showLoading();
+
     $.ajax(options);
 
+}
+
+$.fn.checked = function () {
+    var obj = $(this);
+    return obj.prop('checked');
+}
+
+$.fn.check = function () {
+    var obj = $(this);
+    obj.prop('checked', true);
+}
+
+$.fn.uncheck = function () {
+    var obj = $(this);
+    obj.prop('checked', false);
+}
+
+
+$.fn.disabled = function () {
+    var obj = $(this);
+    return obj.prop('disabled');
+}
+
+$.fn.disable = function () {
+    var obj = $(this);
+    obj.prop('disabled', true);
+}
+
+$.fn.enable = function () {
+    var obj = $(this);
+    obj.prop('disabled', false);
 }

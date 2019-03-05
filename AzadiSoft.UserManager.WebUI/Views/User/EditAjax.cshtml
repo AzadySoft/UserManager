@@ -1,0 +1,82 @@
+﻿@using AzadiSoft.UserManager.Resources
+@model AzadiSoft.UserManager.ViewModels.UserViewModel
+
+@{
+    var formId = "form-edit-user";
+}
+
+<script type="text/javascript">
+
+    function getForm() {
+
+        return $('#@formId');
+    }
+
+    function saveChanges(btn) {
+
+        btn = $(btn);
+
+        btn.disable();
+
+        var form = getForm();
+
+        var formData = form.serializeArray();
+
+        if (form.valid()) {
+
+            var url = '@Url.Action("UpdateUser")';
+
+            var postData = formData;
+
+            ajaxCall(url, function(result) {
+
+                var str = 'تغییرات کاربر ' + result.UserName + ' ذخیره شد.';
+
+                alert(str);
+
+                closeModal();
+
+                reloadGrid();
+
+                btn.enable();
+
+            }, 'post', postData, function(result) {
+
+                var response = result.responseText;
+
+                console.log(response);
+
+                btn.enable();
+
+            });
+        }
+
+    }
+
+</script>
+
+@using (Html.BeginForm("Edit", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form", id=formId }))
+{
+
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x => x.User_ID)
+
+    @Html.ValidationSummary(false)
+
+    
+    ViewData[Consts.FormGroupCol] = " ";
+    
+
+    @Html.Partial("_Create_Edit_Form", Model)
+
+    <div class="row col-lg-offset-2">
+
+        <button id="btnSaveChanges" type="button" class="btn btn-success" onclick="saveChanges(this)">@MessageText.EditUserDetails</button> &nbsp;
+
+        <button id="btnReset" type="reset" class="btn btn-danger">@MessageText.ResetForm</button>
+
+        <a role="button" href="@Url.Action("List")" class="btn btn-primary">@MessageText.BackToList</a>
+
+    </div>
+}
