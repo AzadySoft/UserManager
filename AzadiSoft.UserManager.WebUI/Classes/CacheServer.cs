@@ -77,8 +77,19 @@ namespace AzadiSoft.UserManager.WebUI.Classes
         {
             var jsonData = JavaScriptSerializer.Serialize(value);
 
+            DeleteFromTable(tableName, keyName);
+
             Database.HashSet(tableName, keyName, jsonData);
         }
+
+        public static void DeleteFromTable(string tableName, string keyName)
+        {
+            if (Database.HashExists(tableName, keyName))
+            {
+                Database.HashDelete(tableName, keyName);
+            }
+        }
+
 
         public static T GetFromTable<T>(string tableName, string keyName, T defaultValue = null) where T : class
         {

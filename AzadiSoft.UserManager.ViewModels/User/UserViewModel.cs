@@ -24,9 +24,8 @@ namespace AzadiSoft.UserManager.ViewModels
         public string LastName { get; set; }
 
         [Display(Name = "تاریخ تولد")]
-        [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseEnterMessage")]
         [Column(TypeName = "date")]
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
 
         [Display(Name = "جنسیت")]
         [Required(ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "PleaseSelectMessage")]
@@ -100,9 +99,13 @@ namespace AzadiSoft.UserManager.ViewModels
         public string UserName { get; set; }
 
         [Display(Name = "کلمه عبور")]
-        [StringLength(128, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage", MinimumLength = 6)]
+        [StringLength(128, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage", MinimumLength = 4)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [Display(Name = "نام شرکت")]
+        [StringLength(128, ErrorMessageResourceType = typeof(MessageText), ErrorMessageResourceName = "StringLengthMessage")]
+        public string CompanyName { get; set; }
 
         [Display(Name = "جنسیت")]
         public string Gender_Title => Gender.HasValue ? (Gender == (int) EGender.Male ? MessageText.Male : MessageText.Female) : MessageText.NotSpecified;

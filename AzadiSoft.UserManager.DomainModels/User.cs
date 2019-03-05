@@ -21,7 +21,7 @@ namespace AzadiSoft.UserManager.DomainModels
         public string LastName { get; set; }
 
         [Column(TypeName = "date")]
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
 
         public int? Gender { get; set; }
 
@@ -73,6 +73,10 @@ namespace AzadiSoft.UserManager.DomainModels
         public string UserName { get; set; }
 
         public string Password { get; set; }
+
+        [StringLength(128)]
+        public string CompanyName { get; set; }
+
 
     }
 }

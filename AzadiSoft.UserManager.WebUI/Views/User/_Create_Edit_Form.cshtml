@@ -8,7 +8,7 @@
 
     var editorCol = "col-md-10";
 
-    var formGroup = "form-group";
+    var formGroup = "form-group col-md-6";
 
     var userNameAlert = "UserName_Alert";
 
@@ -45,7 +45,7 @@
 
         $.getJSON(url, postData, function(result) {
 
-            
+
             if (result == true) {
 
                 messageElement.html('<span> شناسه کاربری <b>' + userName + '</b> قبلا به ثبت رسیده است. </span>').css('color','red');
@@ -79,7 +79,7 @@
 
         $.getJSON(url, postData, function(result) {
 
-            
+
             if (result == true) {
 
                 messageElement.html('<span> ایمیل <b>' + email + '</b> قبلا در سایت ثبت نام کرده است. </span>').css('color','red');
@@ -106,7 +106,7 @@
         @Html.EditorFor(x => x.UserName, new { htmlAttributes = new { @class = formControl, onblur = "isUserAlreadyRegistered($(this).val());" } })
 
         @Html.ValidationMessageFor(x => x.UserName)
-        
+
         <div id="@validator@Html.FieldNameFor(x => x.UserName)"></div>
 
     </div>
@@ -192,7 +192,9 @@
 
     <div class="@editorCol">
 
-        @Html.EditorFor(x => x.Birthday, new { htmlAttributes = new { @class = formControl, type = "date" } })
+        @*@Html.EditorFor(x => x.Birthday,"", new { htmlAttributes = new { @class = formControl } })*@
+
+        @Html.Kendo().DatePickerFor(x => x.Birthday)
 
         @Html.ValidationMessageFor(x => x.Birthday)
 
@@ -245,6 +247,20 @@
 
 <div class="@formGroup">
 
+    @Html.LabelFor(x => x.NationalCode, new { @class = labelCol })
+
+    <div class="@editorCol">
+
+        @Html.EditorFor(x => x.NationalCode, new { htmlAttributes = new { @class = formControl } })
+
+        @Html.ValidationMessageFor(x => x.NationalCode)
+
+    </div>
+
+</div>
+
+<div class="@formGroup">
+
     @Html.LabelFor(x => x.HomePhoneNumber, new { @class = labelCol })
 
     <div class="@editorCol">
@@ -266,6 +282,20 @@
         @Html.EditorFor(x => x.WorkPhoneNumber, new { htmlAttributes = new { @class = formControl } })
 
         @Html.ValidationMessageFor(x => x.WorkPhoneNumber)
+
+    </div>
+
+</div>
+
+<div class="@formGroup">
+
+    @Html.LabelFor(x => x.CompanyName, new { @class = labelCol })
+
+    <div class="@editorCol">
+
+        @Html.EditorFor(x => x.CompanyName, new { htmlAttributes = new { @class = formControl } })
+
+        @Html.ValidationMessageFor(x => x.CompanyName)
 
     </div>
 
@@ -319,7 +349,7 @@
 
     <div class="@editorCol">
 
-        @Html.EditorFor(x => x.Notes, new { htmlAttributes = new { @class = formControl, style="height:200px;" } })
+        @Html.EditorFor(x => x.Notes, new { htmlAttributes = new { @class = formControl, style = "height:200px;" } })
 
         @Html.ValidationMessageFor(x => x.Notes)
 

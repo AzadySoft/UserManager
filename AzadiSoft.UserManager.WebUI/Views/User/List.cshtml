@@ -52,7 +52,7 @@
 
 @helper DeleteButton()
 {
-    <a role="button" href="@Url.Action("Delete")/#=User_ID#" onclick="return confirm('@MessageText.AreYouSureToDelete')" class="btn btn-danger">@MessageText.Delete</a>
+    <a role="button" href="@Url.Action("Delete")/#=User_ID#" onclick="return confirm('@MessageText.AreYouSureToDeleteThisUser')" class="btn btn-danger">@MessageText.Delete</a>
 }
 
 

@@ -70,11 +70,29 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to آیا از حذف این کاربر مطمئنید؟.
+        /// </summary>
+        public static string AreYouSureToDeleteThisUser {
+            get {
+                return ResourceManager.GetString("AreYouSureToDeleteThisUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to بازگشت به لیست.
         /// </summary>
         public static string BackToList {
             get {
                 return ResourceManager.GetString("BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطای عمومی در عملیات:.
+        /// </summary>
+        public static string CommonError {
+            get {
+                return ResourceManager.GetString("CommonError", resourceCulture);
             }
         }
         
@@ -111,6 +129,24 @@ namespace AzadiSoft.UserManager.Resources {
         public static string EditUserDetails {
             get {
                 return ResourceManager.GetString("EditUserDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطا در حذف کاربر:.
+        /// </summary>
+        public static string ErrorDeletingUser {
+            get {
+                return ResourceManager.GetString("ErrorDeletingUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطا در بروزرسانی اطلاعات کاربر:.
+        /// </summary>
+        public static string ErrorUpdatingUser {
+            get {
+                return ResourceManager.GetString("ErrorUpdatingUser", resourceCulture);
             }
         }
         
@@ -232,7 +268,7 @@ namespace AzadiSoft.UserManager.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to کاربر {0} با موفقیت ثبت نام شد..
+        ///   Looks up a localized string similar to کاربر &lt;b&gt; {0} &lt;/b&gt; با موفقیت ثبت نام شد..
         /// </summary>
         public static string UserSuccessfullySignUp {
             get {

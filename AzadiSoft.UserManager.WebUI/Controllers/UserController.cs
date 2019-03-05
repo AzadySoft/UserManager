@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using AzadiSoft.UserManager.Framework;
 using AzadiSoft.UserManager.Mappings;
 using AzadiSoft.UserManager.Resources;
 using AzadiSoft.UserManager.ServiceLayer;
@@ -84,7 +85,7 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
 
                 _userService.Insert(entity);
 
-                TempData[Consts.SuccessMessage] = string.Format(MessageText.UserSuccessfullySignUp, model.UserName);
+                SuccessMessage(string.Format(MessageText.UserSuccessfullySignUp, model.UserName));
 
                 return RedirectToAction("Index");
 
@@ -92,7 +93,7 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             catch (Exception ex)
             {
 
-                TempData[Consts.ErrorMessage] = ex.Message;
+                ErrorMessage(ex.Message + "<br/>" + ex.InnerException?.Message + "<br/>" + ex.InnerException?.InnerException?.Message);
 
                 FillViewModelData(model);
 
@@ -168,7 +169,9 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
 
             try
             {
-                var original = _userService.GetByID(model.User_ID);
+                var userId = model.User_ID;
+
+                var original = _userService.GetByID(userId);
 
                 _userService.Detach(original);
 
@@ -185,6 +188,8 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
 
                 _userService.Update(user);
 
+                CacheServer.DeleteFromTable(Consts.Users, "User_" + userId);
+
                 SuccessMessage(string.Format(MessageText.UserUpdated , user.UserName));
 
                 return RedirectToAction("List");
@@ -192,13 +197,32 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             }
             catch (Exception ex)
             {
-                ErrorMessage(ex.Message + "<br/>" + ex.InnerException?.Message + "<br/>" + ex.InnerException?.InnerException?.Message);
+                ErrorMessage(MessageText.ErrorUpdatingUser + ex.GetExceptionFullTraceMessage());
 
                 FillViewModelData(model);
 
                 return View(model);
             }
 
+        }
+
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var user = _userService.GetByID(id);
+
+                _userService.Delete(user);
+
+                SuccessMessage(string.Format(MessageText.UserDeleted, user.UserName));
+
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage(MessageText.ErrorDeletingUser + ex.GetExceptionFullTraceMessage());
+            }
+
+            return RedirectToAction("List");
         }
     }
 }
