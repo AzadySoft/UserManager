@@ -14,7 +14,7 @@ namespace AzadiSoft.UserManager.Framework
             {
                 msg += GetExceptionFullTraceMessage(ex.InnerException);
             }
-
+            
             return msg;
         }
     }

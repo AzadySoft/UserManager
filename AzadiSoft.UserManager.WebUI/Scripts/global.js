@@ -34,7 +34,9 @@ function closeModal() {
     getModal().modal('hide');
 }
 
-function ajaxCall(url, successFn, method, postData, failFunction) {
+function ajaxCall(url, successFn, method, postData, failFunction, completeFn) {
+
+    
 
     var options = {
         url: url,
@@ -66,6 +68,11 @@ function ajaxCall(url, successFn, method, postData, failFunction) {
         },
 
         complete: function(e) {
+
+            if (completeFn) {
+
+                completeFn(e);
+            }
 
             hideLoading();
 

@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzadiSoft.UserManager.Resou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzadiSoft.UserManager.Framework", "AzadiSoft.UserManager.Framework\AzadiSoft.UserManager.Framework.csproj", "{40673AC1-C198-42C1-8859-987E1D656B5E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{D3DF6C47-CCF4-4942-BD44-81D32AA1CBEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzadiSoft.ReactSample", "AzadiSoft.ReactSample\AzadiSoft.ReactSample.csproj", "{1BD56852-1CEA-440C-B625-A7A67477591B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,9 +61,16 @@ Global
 		{40673AC1-C198-42C1-8859-987E1D656B5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40673AC1-C198-42C1-8859-987E1D656B5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40673AC1-C198-42C1-8859-987E1D656B5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BD56852-1CEA-440C-B625-A7A67477591B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BD56852-1CEA-440C-B625-A7A67477591B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BD56852-1CEA-440C-B625-A7A67477591B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BD56852-1CEA-440C-B625-A7A67477591B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1BD56852-1CEA-440C-B625-A7A67477591B} = {D3DF6C47-CCF4-4942-BD44-81D32AA1CBEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5111E068-4D1C-40FF-B8E6-11854A995505}

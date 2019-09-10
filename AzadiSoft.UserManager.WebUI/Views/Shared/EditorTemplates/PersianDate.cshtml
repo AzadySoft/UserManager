@@ -1,0 +1,59 @@
+﻿@using System.Web.Mvc.Html
+@using AzadiSoft.UserManager.WebUI.Classes
+@model DateTime?
+@{
+    var id = Html.IdForModel();
+
+    var pickerId = Html.Id("_Picker").ToHtmlString();
+
+    var value = Model.ToPersianDateTime();
+}
+
+@Html.HiddenFor(x => x)
+
+<input id="@pickerId" type="text" class = "form-control" 
+       data-targetselector="#@pickerId"
+       data-mddatetimepicker = "true" data-trigger="click" data-placement="bottom" data-englishnumber="true" />
+
+<script type="text/javascript">
+
+    $(() => {
+
+        function getPicker() {
+
+            return $('#@pickerId');
+        }
+
+        function getHiddenBox() {
+
+            return $('#@id');
+        }        
+
+        getPicker().change(function() {
+
+            var persianDate = new String($(this).val());
+
+            var parts = persianDate.split('/');
+
+            var year = parseInt(parts[0]);
+
+            var month = parseInt(parts[1]);
+
+            var day = parseInt(parts[2]);
+
+            var miladiDate = toGregorian(year, month, day);            
+
+            var miladiStr = miladiDate.gy +
+                '/' +
+                miladiDate.gm.toString().padStart(2, '0') +
+                '/' +
+                miladiDate.gd.toString().padStart(2, '0');
+
+            getHiddenBox().val(miladiStr);
+
+        });
+
+        //getPicker().MdPersianDateTimePicker({ EnglishNumbers: true, Placement: 'left' });
+    })
+
+</script>

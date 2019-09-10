@@ -215,9 +215,9 @@
 
     <div class="@editorCol">
 
-        @*@Html.EditorFor(x => x.Birthday,"", new { htmlAttributes = new { @class = formControl } })*@
+        @Html.EditorFor(x => x.Birthday,"PersianDate", new { htmlAttributes = new { @class = formControl } })
 
-        @Html.Kendo().DatePickerFor(x => x.Birthday).HtmlAttributes(new{style="width:100%"})
+        @*@Html.Kendo().DatePickerFor(x => x.Birthday).HtmlAttributes(new{style="width:100%"})*@
 
         @Html.ValidationMessageFor(x => x.Birthday)
 

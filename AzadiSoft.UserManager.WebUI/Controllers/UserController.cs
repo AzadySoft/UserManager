@@ -238,6 +238,18 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             return PartialView(model);
         }
 
+        public ActionResult UpdateUser(UserViewModel model, bool error = false)
+        {
+            if (error)
+            {
+                throw new InvalidOperationException(MessageText.CommonError);
+            }
+
+            TryUpdateUser(model);
+
+            return Json(new { success = true, model.UserName }, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult Delete(int id)
         {
             try
@@ -257,16 +269,6 @@ namespace AzadiSoft.UserManager.WebUI.Controllers
             return RedirectToAction("List");
         }
 
-        public ActionResult UpdateUser(UserViewModel model, bool error = false)
-        {
-            if (error)
-            {
-                throw new InvalidOperationException(MessageText.CommonError);
-            }
 
-            TryUpdateUser(model);
-
-            return Json(new {success = true, model.UserName}, JsonRequestBehavior.AllowGet);
-        }
     }
 }

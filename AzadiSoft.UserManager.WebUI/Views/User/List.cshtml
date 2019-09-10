@@ -61,8 +61,6 @@
 
             function (result) {
 
-                var str = JSON.stringify(result);
-
                 var msg = 'کاربر ' + result.UserName + (result.active ? ' فعال ' : ' غیرفعال ') + 'شد.';
 
                 alert(msg);
@@ -187,7 +185,7 @@
 
           .Scrollable(x => x.Height(600))
 
-          .Pageable(p => p.Refresh(true).PreviousNext(true))
+          .Pageable(p => p.Refresh(true).PreviousNext(true).PageSizes(new[]{10,25,50,100,250,500,1000}))
 
           .DataSource(x => x.Ajax().Read(read => read.Action("Grid_Read", "User"))
 
